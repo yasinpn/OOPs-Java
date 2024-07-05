@@ -1,0 +1,93 @@
+import java.util.Scanner;
+import java.io.*;
+
+class Thread1 extends Thread
+{String s;FileWriter f2,f3;
+	Thread1(String s,FileWriter f2,FileWriter f3)
+	{
+		this.s=s;
+		this.f3=f3;
+		this.f2=f2;
+		
+	}int l;
+	public void run()
+	{	
+	String arr[]=s.split(" ");
+	
+	l=arr.length;
+	try {
+	if(l%2!=0)
+		f2.write(s);
+			
+	else
+		f3.write(s);
+	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	}
+	}
+	
+}
+class Thread2 extends Thread
+{String s;FileWriter f3,f2;
+	
+	Thread2(String s,FileWriter f2,FileWriter f3){
+		this.s=s;
+		this.f3=f3;
+		this.f2=f2;
+	}int l;
+	public void run()
+	{
+		
+	String arr[]=s.split(" ");
+	l=arr.length;
+	try {
+	if(l%2!=0)
+		
+			f2.write(s);
+	
+		
+	else
+			f3.write(s);
+	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}
+
+public class LABINTERNAL {
+
+	public static void main(String[] args) {
+		try {
+FileReader file1=new FileReader("/Users/ashil/Desktop/file1.txt");
+FileWriter file2=new FileWriter("fileodd.txt");
+FileWriter file3=new FileWriter("fileeven.txt");
+int x=1;
+BufferedReader br=new BufferedReader(file1);
+String s;
+while((s=br.readLine())!=null)
+{
+	//System.out.println(s);
+if(x%2!=0) {
+Thread1 t1=new Thread1(s,file2,file3);
+t1.start();
+}else {
+Thread2 t2=new Thread2(s,file2,file3);
+t2.start();
+}x++;
+}
+
+file1.close();
+file2.close();
+file3.close();}
+		
+catch(Exception e)
+{
+	System.out.println("Error: "+e);}
+
+	}
+		}

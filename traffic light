@@ -1,0 +1,65 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class trafflight extends JFrame implements ActionListener{
+JRadioButton bg,br,by;
+JTextField lg,lr,ly,text;
+	trafflight()
+	{	setVisible(true);
+		setLayout(null);
+		setSize(600,600);
+		bg=new JRadioButton("Green");
+		by=new JRadioButton("Yellow");
+		br=new JRadioButton("Red");
+		
+		bg.setBounds(200, 50, 100, 50);
+		br.setBounds(300, 50, 100, 50);
+		by.setBounds(400, 50, 100, 50);
+		add(bg);
+		add(br);
+		add(by);
+		lg=new JTextField();
+		lr=new JTextField();
+		ly=new JTextField();
+		text=new JTextField();
+		lg.setBounds(300, 200, 50, 50);
+		lr.setBounds(300, 300, 50, 50);
+		ly.setBounds(300, 400, 50, 50);
+		text.setBounds(250,150,200,50);
+		add(lg);
+		add(ly);
+		add(lr);
+		add(text);
+		bg.addActionListener((ActionListener) this);
+		br.addActionListener((ActionListener) this);
+		by.addActionListener((ActionListener) this);
+	}
+public void actionPerformed(ActionEvent e)
+{
+	if(e.getSource()==bg)
+	{
+		lg.setBackground(Color.GREEN);
+		ly.setBackground(null);
+		lr.setBackground(null);
+		text.setText("Go");
+	}
+	else if(e.getSource()==br)
+	{
+		lg.setBackground(null);
+		ly.setBackground(null);
+		lr.setBackground(Color.red);
+		text.setText("Stop");
+	}
+	else if(e.getSource()==by)
+	{
+		lg.setBackground(null);
+		ly.setBackground(Color.YELLOW);
+		lr.setBackground(null);
+		text.setText("Go slow");
+	}
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+new trafflight();
+	}
+}

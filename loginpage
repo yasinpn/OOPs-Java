@@ -1,0 +1,76 @@
+import java.util.*;
+import java.io.*;
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+
+
+class Log extends JFrame implements ActionListener
+{JLabel jl1,jl2,res;
+JTextField jt1;
+JPasswordField jt2;
+JButton jb,reset;
+	Log()
+	{
+		jl1=new JLabel("USER NAME");
+		jt1=new JTextField();
+		jl2=new JLabel("PASSWORD");
+		jt2=new JPasswordField();
+		jb=new JButton("LOGIN");
+		res=new JLabel();
+		jb.addActionListener(this);
+		setVisible(true);
+		setLayout(null);
+		setSize(600,600);
+		jl1.setBounds(200, 200, 100, 50);
+		jt1.setBounds(300,200,150,50);
+		jl2.setBounds(200,300,100,50);
+		jt2.setBounds(300,300,150,50);
+		jb.setBounds(250,400,75,50);
+		res.setBounds(250,100,200,50);
+		reset=new JButton("RESET");
+		reset.setBounds(350,400,75,50);
+		add(jl1);
+		add(jl2);
+		add(jt1);
+		add(jt2);
+		add(jb);
+		add(res);
+		add(reset);
+		reset.addActionListener(this);
+		jb.addActionListener(this);
+		}
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getSource()==jb)
+		{
+			if((jt1.getText().equals("Aswin"))&&(jt2.getText().equals("123")))
+					res.setText("Valid Entry");
+			else
+				res.setText("Invalid Credentials");
+			
+		}
+		else
+		{	res.setText("Re-enter");
+			jt1.setText("");
+			jt2.setText("");
+		}
+	
+		
+	}
+}
+public class LoginPage {
+
+	public LoginPage() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Log l=new Log();
+		
+
+	}
+
+}
+
